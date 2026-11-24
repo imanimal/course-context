@@ -1,0 +1,27 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.imanimal/course-context",
+  "title": "Course Context",
+  "description": "A student's classes, assignments, due dates, grades and announcements from Canvas, Moodle, Classroom, Schoology, calendar feeds, WeBWorK and Gradescope.",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/imanimal/course-context",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "course-context",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "mcp"
+        }
+      ]
+    }
+  ]
+}

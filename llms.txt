@@ -1,0 +1,36 @@
+# course-context
+
+> A zero-dependency Node.js CLI, MCP server, HTTP API and browser extension that keeps an AI-readable snapshot of a student's classes, work items, due dates, grades and announcements. Sources: Canvas, Moodle, Google Classroom, Schoology, any iCalendar feed (Brightspace, Blackboard, Sakai, Google Calendar), WeBWorK, Gradescope, custom JSON. Outputs: a Markdown/JSON/iCalendar folder (local, synced cloud folders, rclone, WebDAV, Google Drive, OneDrive, Dropbox, git), MCP over stdio and Streamable HTTP, REST with OpenAPI, to-do apps (Todoist, Google Tasks, Microsoft To Do, TickTick, Notion, CalDAV, Apple Reminders, Things), webhooks. Read-only toward schools.
+
+If you are an AI agent asked to install or set this up, follow llms-install.md exactly. If you are answering questions from an existing Course Context folder, read that folder's README-for-AI.md and now.md.
+
+## Start
+
+- [llms-install.md](llms-install.md): install and configure, step by step, for agents
+- [AGENTS.md](AGENTS.md): working on this repository (layout, commands, conventions)
+- [README.md](README.md): the human overview
+
+## Reference
+
+- [docs/cli.md](docs/cli.md): every command, flag, output shape and exit code
+- [docs/config.md](docs/config.md): config.json, secret references, OAuth
+- [docs/sources.md](docs/sources.md): every source, how to get each credential, source JSON format
+- [docs/destinations.md](docs/destinations.md): file destinations, to-do apps, webhooks
+- [docs/output.md](docs/output.md): the rendered folder and its line format
+- [docs/mcp.md](docs/mcp.md): MCP tools, resources, prompts, protocol versions
+- [docs/clients.md](docs/clients.md): connecting every AI app and web chatbot
+- [docs/api.md](docs/api.md): HTTP API and the cc-todo/1 record
+- [docs/errors.md](docs/errors.md): error codes, meanings, fixes
+- [docs/self-host.md](docs/self-host.md): tunnels, Docker, push-to-server, read-only mirrors
+- [docs/extension.md](docs/extension.md): the browser extension for schools that block tokens
+
+## Schemas
+
+- [schema/context.schema.json](schema/context.schema.json): cc/1 context document
+- [schema/todo.schema.json](schema/todo.schema.json): cc-todo/1 to-do list
+- [schema/config.schema.json](schema/config.schema.json): config.json
+
+## Optional
+
+- [docs/writing-for-agents.md](docs/writing-for-agents.md): why the docs and CLI are shaped the way they are
+- [skills/course-context/SKILL.md](skills/course-context/SKILL.md): agent skill for using an installed setup

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Course Context</title>
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+<main>
+  <h1>Course Context</h1>
+  <p class="lead">Reads your classes with the sign-in you already use in this browser and sends them where your AI can read them.</p>
+
+  <section>
+    <h2>Your school</h2>
+    <label for="canvas">Canvas address</label>
+    <div class="row"><input id="canvas" placeholder="school.instructure.com" autocomplete="off"><button id="addCanvas">Add</button></div>
+    <ul id="canvasList" class="chips"></ul>
+    <label for="ics">Calendar feed links (Moodle, Brightspace, Blackboard, Google Classroom)</label>
+    <div class="row"><input id="ics" placeholder="https://.../calendar.ics" autocomplete="off"><button id="addIcs">Add</button></div>
+    <ul id="icsList" class="chips"></ul>
+    <label class="check"><input type="checkbox" id="webwork"> Read WeBWorK sets that Canvas links to</label>
+    <label class="check"><input type="checkbox" id="gradescope"> Read Gradescope</label>
+  </section>
+
+  <section>
+    <h2>Send to</h2>
+    <label class="check"><input type="checkbox" id="sendLocal"> The Course Context app on this computer</label>
+    <div class="indent">
+      <label for="localUrl">Address</label><input id="localUrl">
+      <label for="localToken">Token</label><input id="localToken" placeholder="Run: course-context server token" autocomplete="off">
+    </div>
+    <label for="serverUrl">Your own server (optional)</label><input id="serverUrl" placeholder="https://cc.example.com">
+    <label for="serverToken">Server token</label><input id="serverToken" autocomplete="off">
+    <label class="check"><input type="checkbox" id="download"> Also save the files to Downloads/Course Context</label>
+    <label for="every">Sync every (minutes)</label><input id="every" type="number" min="5" max="1440">
+  </section>
+
+  <section>
+    <div class="row"><button id="sync" class="primary">Sync now</button><span id="saved" class="muted"></span></div>
+    <pre id="status" class="status"></pre>
+  </section>
+
+  <p class="muted">Course Context only reads. It never submits, posts or changes anything in Canvas, WeBWorK or Gradescope.</p>
+</main>
+<script type="module" src="options.js"></script>
+</body>
+</html>

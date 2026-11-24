@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imanimal/course-context/schema/todo.schema.json",
+  "title": "course-context to-do list (cc-todo/1)",
+  "type": "object",
+  "required": [
+    "schema",
+    "generatedAt",
+    "timezone",
+    "todos"
+  ],
+  "properties": {
+    "schema": {
+      "const": "cc-todo/1"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "todos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "done",
+          "priority",
+          "hash"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "class": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "classId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "kind": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "done": {
+            "type": "boolean"
+          },
+          "due": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "dueDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "dueTime": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^\\d{2}:\\d{2}$"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "priority": {
+            "enum": [
+              "high",
+              "normal"
+            ]
+          },
+          "overdue": {
+            "type": "boolean"
+          },
+          "points": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "hash": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

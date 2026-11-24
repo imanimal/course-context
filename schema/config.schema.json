@@ -1,0 +1,565 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imanimal/course-context/schema/config.schema.json",
+  "title": "course-context config.json",
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "canvas",
+              "ics",
+              "webwork",
+              "gradescope",
+              "moodle",
+              "classroom",
+              "schoology",
+              "manual",
+              "command",
+              "url",
+              "snapshot",
+              "module"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "token": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "literal, env:NAME, file:PATH, cmd:COMMAND or keychain:SERVICE/ACCOUNT"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "refreshToken"
+                ],
+                "properties": {
+                  "type": {
+                    "const": "oauth"
+                  },
+                  "provider": {
+                    "enum": [
+                      "google",
+                      "microsoft",
+                      "dropbox",
+                      "ticktick"
+                    ]
+                  },
+                  "tokenUrl": {
+                    "type": "string"
+                  },
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "clientSecret": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          },
+          "password": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "literal, env:NAME, file:PATH, cmd:COMMAND or keychain:SERVICE/ACCOUNT"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "refreshToken"
+                ],
+                "properties": {
+                  "type": {
+                    "const": "oauth"
+                  },
+                  "provider": {
+                    "enum": [
+                      "google",
+                      "microsoft",
+                      "dropbox",
+                      "ticktick"
+                    ]
+                  },
+                  "tokenUrl": {
+                    "type": "string"
+                  },
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "clientSecret": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          },
+          "cookie": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "literal, env:NAME, file:PATH, cmd:COMMAND or keychain:SERVICE/ACCOUNT"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "refreshToken"
+                ],
+                "properties": {
+                  "type": {
+                    "const": "oauth"
+                  },
+                  "provider": {
+                    "enum": [
+                      "google",
+                      "microsoft",
+                      "dropbox",
+                      "ticktick"
+                    ]
+                  },
+                  "tokenUrl": {
+                    "type": "string"
+                  },
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "clientSecret": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          },
+          "secret": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "literal, env:NAME, file:PATH, cmd:COMMAND or keychain:SERVICE/ACCOUNT"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "refreshToken"
+                ],
+                "properties": {
+                  "type": {
+                    "const": "oauth"
+                  },
+                  "provider": {
+                    "enum": [
+                      "google",
+                      "microsoft",
+                      "dropbox",
+                      "ticktick"
+                    ]
+                  },
+                  "tokenUrl": {
+                    "type": "string"
+                  },
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "clientSecret": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          },
+          "key": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "literal, env:NAME, file:PATH, cmd:COMMAND or keychain:SERVICE/ACCOUNT"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "refreshToken"
+                ],
+                "properties": {
+                  "type": {
+                    "const": "oauth"
+                  },
+                  "provider": {
+                    "enum": [
+                      "google",
+                      "microsoft",
+                      "dropbox",
+                      "ticktick"
+                    ]
+                  },
+                  "tokenUrl": {
+                    "type": "string"
+                  },
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "clientSecret": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          },
+          "url": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "literal, env:NAME, file:PATH, cmd:COMMAND or keychain:SERVICE/ACCOUNT"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "refreshToken"
+                ],
+                "properties": {
+                  "type": {
+                    "const": "oauth"
+                  },
+                  "provider": {
+                    "enum": [
+                      "google",
+                      "microsoft",
+                      "dropbox",
+                      "ticktick"
+                    ]
+                  },
+                  "tokenUrl": {
+                    "type": "string"
+                  },
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "clientSecret": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "destinations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "folder",
+              "rclone",
+              "webdav",
+              "gdrive",
+              "onedrive",
+              "dropbox",
+              "git",
+              "webhook",
+              "server",
+              "todoist",
+              "google-tasks",
+              "microsoft-todo",
+              "ticktick",
+              "notion",
+              "caldav",
+              "apple-reminders",
+              "things"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "token": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "literal, env:NAME, file:PATH, cmd:COMMAND or keychain:SERVICE/ACCOUNT"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "refreshToken"
+                ],
+                "properties": {
+                  "type": {
+                    "const": "oauth"
+                  },
+                  "provider": {
+                    "enum": [
+                      "google",
+                      "microsoft",
+                      "dropbox",
+                      "ticktick"
+                    ]
+                  },
+                  "tokenUrl": {
+                    "type": "string"
+                  },
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "clientSecret": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          },
+          "password": {
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "literal, env:NAME, file:PATH, cmd:COMMAND or keychain:SERVICE/ACCOUNT"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "type",
+                  "refreshToken"
+                ],
+                "properties": {
+                  "type": {
+                    "const": "oauth"
+                  },
+                  "provider": {
+                    "enum": [
+                      "google",
+                      "microsoft",
+                      "dropbox",
+                      "ticktick"
+                    ]
+                  },
+                  "tokenUrl": {
+                    "type": "string"
+                  },
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "clientSecret": {
+                    "type": "string"
+                  },
+                  "refreshToken": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "server": {
+      "type": "object",
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "classes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "nick": {
+                "type": "string"
+              },
+              "mode": {
+                "enum": [
+                  "priority",
+                  "active",
+                  "ghost",
+                  "hidden"
+                ]
+              },
+              "notes": {
+                "type": "string"
+              },
+              "mergeInto": {
+                "type": "string"
+              },
+              "links": {
+                "type": "array"
+              }
+            }
+          }
+        },
+        "items": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "done": {
+                "type": "boolean"
+              },
+              "due": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              },
+              "priority": {
+                "type": "boolean"
+              },
+              "hidden": {
+                "type": "boolean"
+              },
+              "doneVia": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "title"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "due": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "classId": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "note": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "done": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "horizonDays": {
+          "type": "integer"
+        },
+        "pastDays": {
+          "type": "integer"
+        },
+        "announcementDays": {
+          "type": "integer"
+        },
+        "maxSummary": {
+          "type": "integer"
+        },
+        "folderName": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

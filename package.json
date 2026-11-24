@@ -1,0 +1,40 @@
+{
+  "name": "course-context",
+  "version": "0.1.0",
+  "description": "Keeps an AI-readable snapshot of a student's classes, work and due dates (Canvas, Moodle, Google Classroom, Schoology, WeBWorK, Gradescope, any calendar feed) in a folder, cloud drive or MCP server.",
+  "type": "module",
+  "bin": {
+    "course-context": "src/cli.js",
+    "ccx": "src/cli.js"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./core": "./src/core/index.js"
+  },
+  "files": [
+    "src",
+    "extension",
+    "docs",
+    "schema",
+    "skills",
+    "llms.txt",
+    "llms-install.md",
+    "AGENTS.md",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "test": "node --test",
+    "build:extension": "node tools/build-extension.mjs",
+    "check": "node tools/check-wording.mjs && node --test"
+  },
+  "keywords": ["canvas", "lms", "mcp", "model-context-protocol", "students", "llm", "ai", "moodle", "google-classroom", "schoology", "webwork", "gradescope", "ical", "llms.txt"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imanimal/course-context.git"
+  },
+  "mcpName": "io.github.imanimal/course-context"
+}

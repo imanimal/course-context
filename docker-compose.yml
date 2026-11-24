@@ -1,0 +1,15 @@
+# docker compose up -d   then   docker compose exec course-context course-context source add canvas --host ... --token ...
+services:
+  course-context:
+    build: .
+    image: course-context
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    environment:
+      COURSE_CONTEXT_TOKEN: ${COURSE_CONTEXT_TOKEN:?set COURSE_CONTEXT_TOKEN to a long random string}
+      COURSE_CONTEXT_SYNC_EVERY: "30"
+    volumes:
+      - course-context:/data
+volumes:
+  course-context:

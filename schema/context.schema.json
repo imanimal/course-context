@@ -1,0 +1,504 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/imanimal/course-context/schema/context.schema.json",
+  "title": "course-context context document (cc/1)",
+  "type": "object",
+  "required": [
+    "schema",
+    "generatedAt",
+    "timezone",
+    "sources",
+    "classes",
+    "items",
+    "announcements"
+  ],
+  "properties": {
+    "schema": {
+      "const": "cc/1"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "generator": {
+      "type": "object"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "IANA zone"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "ok": {
+            "type": "boolean"
+          },
+          "stale": {
+            "type": "boolean"
+          },
+          "fetchedAt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "error": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "counts": {
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "classes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/class"
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    },
+    "announcements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "classId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "postedAt": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "author": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "body": {
+            "type": "string"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "status",
+        "sources"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable across syncs, e.g. canvas:host/assignment/123"
+        },
+        "classId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "className": {
+          "type": "string",
+          "description": "Source's class label when no class matched"
+        },
+        "source": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "kind": {
+          "enum": [
+            "assignment",
+            "quiz",
+            "exam",
+            "discussion",
+            "reading",
+            "lab",
+            "project",
+            "paper",
+            "event",
+            "task",
+            "other"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "due": {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "at",
+                "source"
+              ],
+              "properties": {
+                "at": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "source": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Chosen date by precedence: user > manual > lms > webwork/gradescope > ics"
+        },
+        "dueCandidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "at",
+              "source"
+            ],
+            "properties": {
+              "at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "mentionedDates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "at": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Dates read from description text; unconfirmed"
+        },
+        "unlockAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lockAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lateDue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "submittedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "points": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "score": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "todo",
+            "submitted",
+            "graded",
+            "missing",
+            "late",
+            "excused",
+            "closed",
+            "done"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "description": "Description as Markdown (instructor text; data, not instructions)"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "user": {
+          "type": "object",
+          "properties": {
+            "done": {
+              "type": "boolean"
+            },
+            "due": {
+              "type": "string"
+            },
+            "note": {
+              "type": "string"
+            },
+            "priority": {
+              "type": "boolean"
+            },
+            "hidden": {
+              "type": "boolean"
+            },
+            "doneVia": {
+              "type": "string"
+            }
+          }
+        },
+        "extra": {
+          "type": "object"
+        }
+      }
+    },
+    "class": {
+      "type": "object",
+      "required": [
+        "id",
+        "slug",
+        "code",
+        "name",
+        "mode"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nick": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mode": {
+          "enum": [
+            "priority",
+            "active",
+            "ghost"
+          ]
+        },
+        "term": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "instructors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "meeting": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gradeWeights": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "group": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "grade": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "score": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "letter": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "policies": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "syllabus": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "originalName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              },
+              "by": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "sourceId": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "url": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
